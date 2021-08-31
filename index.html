@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+.parent{
+    display: flex;
+justify-content: space-between;
+    position: relative;
+    height: 200px;
+    background-color: black;
+    
+    border: 2px solid black;
+}
+.cAll{
+   position: relative;
+   height: 100%;
+   width: 700px;
+   transform-origin: bottom;
+   
+}
+.cbg1{
+    background-color: aqua;
+
+}
+.cbg2{
+    background-color:beige;
+
+}
+.cbg3{
+    background-color:grey;
+
+}
+.cbg4{
+    background-color:burlywood;
+
+}
+.cbg5{
+    background-color:yellowgreen;
+
+}
+
+.c1{
+    animation: animation1 1s ease-in-out 0s alternate-reverse infinite backwards; 
+animation-play-state: running;
+}
+.c2{
+    animation: animation2 1s ease-in-out 0s alternate-reverse infinite backwards; 
+    animation-play-state: running;
+}
+.c3{
+    animation: animation3 1s ease-in-out 0s alternate-reverse infinite backwards; 
+    animation-play-state: running;
+}
+.c4{
+    animation: animation4 1s ease-in-out 0s alternate-reverse infinite backwards; 
+    animation-play-state: running;
+}
+.paused{
+    animation-play-state: paused; 
+}
+.start{
+    animation-play-state: running;  
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50vw;
+    margin-top: 100px;
+    margin-left:25vw;
+   
+}
+   
+@keyframes animation1 {
+    0%{
+    
+       transform: scaleY(.2);
+     }
+   
+    100%{
+    transform: scaleY(.9);
+    }
+}
+
+@keyframes animation2 {
+    0%{
+     transform: scaleY(.8);
+     }
+    100%{
+    transform: scaleY(1);
+    }
+}
+@keyframes animation3 {
+    0%{
+     transform: scaleY(.1);
+     }
+    100%{
+    transform: scaleY(.6);
+    }
+}
+@keyframes animation4 {
+    0%{
+     transform: scaleY(.3);
+     }
+    100%{
+    transform: scaleY(.9);
+    }
+}
+
+
+/* .c2{
+    position: absolute; 
+   height: 100%;
+   left: 200px;
+   width: 200px;
+    background-color: blanchedalmond;
+} */
+    </style>
+    <div class="container">
+    <div class="parent">
+        <div class="cAll cbg1"></div>
+        <div class="cAll cbg2"></div>
+        <div class="cAll cbg3"></div>
+        <div class="cAll cbg4"></div>
+        <div class="cAll cbg5"></div>
+
+ </div>
+ <div style="display: flex; justify-content: space-between;">
+    <button id="start" style="width: 100px;height: 40px; background-color: green;color: black; border: 1px solid black; margin-top: 20px;margin-left: 0px;">start</button>
+    <button id="end" style="width: 100px;height: 40px; background-color: red;color: black; border: 1px solid black; margin-top: 20px;">end</button>
+</div>
+</div>
+</body>
+<script>
+    var i=1
+    var y = document.querySelectorAll("div");
+ var x= [...y];
+    var startB = document.getElementById("start");
+startB.onclick = function(e) {
+console.log(e);
+    x[2].classList.add(`c${i}`);
+    x[2].classList.remove("paused");
+    x[3].classList.add(`c${2}`);
+    x[3].classList.remove("paused");
+    x[4].classList.add(`c${3}`);
+    x[4].classList.remove("paused");
+    x[5].classList.add(`c${4}`);
+    x[5].classList.remove("paused");
+    x[6].classList.add(`c${1}`);
+    x[6].classList.remove("paused");
+
+   
+    function funca(i,j) {
+        
+        if(i==4) {
+            x[j].classList.remove(`c${4}`) 
+            x[j].classList.add(`c${1}`) 
+            i=1; 
+            m=1
+            n=1
+        }else{
+    x[j].classList.remove(`c${i}`)
+x[j].classList.add(`c${++i}`) 
+        }
+    }
+var m=1
+ int1=setInterval(() => {
+
+    funca(m++,2)
+   
+       
+    },4000);
+    var n=2
+     int2=setInterval(() => {
+    funca(n++,3)        
+},8000);
+
+var o=3
+ int3=setInterval(() => {
+    funca(o++,4)        
+},4000);
+
+var p=4
+    int4=setInterval(() => {
+    funca(n++,5)        
+},4000);
+
+var q=1
+     int5=setInterval(() => {
+    funca(n++,6)        
+},8000);
+}
+
+
+var endB = document.getElementById("end");
+endB.onclick = function(e) {
+console.log(e);
+x[2].classList.add("paused");
+x[3].classList.add("paused");    
+x[4].classList.add("paused");
+x[5].classList.add("paused");
+x[6].classList.add("paused");
+clearInterval(int1)
+clearInterval(int2)
+clearInterval(int3)
+clearInterval(int4)
+clearInterval(int5)
+
+}
+</script>
+</html>
+
